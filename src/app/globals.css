@@ -1,0 +1,353 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  /*
+   * Dos tipografías de marca, ninguna más.
+   *   font-display       → Cormorant Garamond Light. Nombre, titulares,
+   *                        posicionamiento, texto editorial del sitio público.
+   *   font-institutional → Cinzel. Etiquetas, "SASTRERÍA · EST. 2004",
+   *                        navegación. Siempre mayúsculas, siempre subordinada.
+   *
+   * `font-sans` (Inter) queda estrictamente como sans de apoyo: CMS interno y
+   * microcopy legal. Nunca en superficie de marca — es la excepción que el
+   * manual permite para bloques largos discretos, no una tercera tipografía.
+   */
+  --font-display: var(--font-display);
+  --font-institutional: var(--font-institutional);
+  --font-sans: var(--font-sans);
+  --font-mono: ui-monospace, monospace;
+  /* Alias heredado: los componentes que ya usaban `font-heading` (Playfair)
+   * pasan a Cormorant sin tocarlos uno por uno. */
+  --font-heading: var(--font-display);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/*
+ * ---------------------------------------------------------------------------
+ * Paleta de marca JOHN HENRY — bloqueada.
+ * ---------------------------------------------------------------------------
+ * Cinco colores exactos, más un sexto táctil que no existe en pantalla. No se
+ * amplía, no se ajusta por tendencia. Ningún color fuera de esta lista aparece
+ * en material de marca.
+ *
+ * El azul marino es el que debe dominar la presencia visual. El negro profundo
+ * se reserva para el nivel más alto (hecho a medida, footer, sidebar del CMS):
+ * su poder viene de aparecer poco. Blanco puro (#FFFFFF) no existe en este
+ * sistema — el claro siempre es marfil.
+ */
+:root {
+  --jh-navy: #0d1f3c; /* Principal. Autoridad estable. */
+  --jh-navy-deep: #081527; /* Profundidad y overlays. Derivado, no de paleta. */
+  --jh-navy-raised: #12294d; /* Superficies elevadas sobre navy. Derivado. */
+  --jh-gold: #e8d090; /* Distinción. Solo sobre fondo oscuro, nunca sobre marfil. */
+  --jh-gold-mid: #c4a55a; /* Acento de apoyo: líneas, detalles. No reemplaza al oro pálido. */
+  --jh-black: #0f0e0c; /* Nivel más alto. Escaso a propósito. */
+  --jh-ivory: #f5f0e6; /* Todo lo claro. Nunca blanco clínico. */
+  --jh-bronze: #7a4e1a; /* Hot stamping físico. NO usar en pantalla. */
+
+  /* Zona de respeto del logo: equivalente a la altura de la H del monograma. */
+  --jh-clearspace: 0.6em;
+}
+
+/*
+ * Variante C — Marfil. Papelería y secciones claras del sitio.
+ * Es el modo "claro"; el look principal del producto es el oscuro (navy).
+ */
+:root {
+  --background: var(--jh-ivory);
+  --foreground: var(--jh-navy);
+  --card: #efe9db;
+  --card-foreground: var(--jh-navy);
+  --popover: #efe9db;
+  --popover-foreground: var(--jh-navy);
+  --primary: var(--jh-navy);
+  --primary-foreground: var(--jh-gold);
+  --secondary: #e4dcc8;
+  --secondary-foreground: var(--jh-navy);
+  --muted: #ebe4d4;
+  --muted-foreground: #5a6273;
+  --accent: var(--jh-gold-mid);
+  --accent-foreground: var(--jh-navy);
+  /*
+   * Rojo funcional de estado destructivo. Vive fuera de la paleta bloqueada a
+   * propósito: es señalética operativa del CMS interno, no expresión de marca,
+   * y no aparece en ninguna superficie pública. Oxblood apagado para no romper
+   * el registro cromático.
+   */
+  --destructive: #7f2a25;
+  --border: rgba(13, 31, 60, 0.14);
+  --input: rgba(13, 31, 60, 0.18);
+  --ring: var(--jh-gold-mid);
+  --chart-1: var(--jh-navy);
+  --chart-2: var(--jh-gold-mid);
+  --chart-3: #5a6273;
+  --chart-4: #9a8f76;
+  --chart-5: #c9c0a8;
+  /* La marca no es redondeada. Radio mínimo, solo para no dejar cantos duros. */
+  --radius: 0.125rem;
+  --sidebar: var(--jh-black);
+  --sidebar-foreground: var(--jh-ivory);
+  --sidebar-primary: var(--jh-gold);
+  --sidebar-primary-foreground: var(--jh-black);
+  --sidebar-accent: #1c1a17;
+  --sidebar-accent-foreground: var(--jh-ivory);
+  --sidebar-border: rgba(232, 208, 144, 0.14);
+  --sidebar-ring: var(--jh-gold);
+}
+
+/*
+ * Variante A — Azul Marino. El look principal, público y CMS.
+ */
+.dark {
+  --background: var(--jh-navy);
+  --foreground: var(--jh-ivory);
+  --card: var(--jh-navy-deep);
+  --card-foreground: var(--jh-ivory);
+  --popover: var(--jh-navy-deep);
+  --popover-foreground: var(--jh-ivory);
+  --primary: var(--jh-gold);
+  --primary-foreground: var(--jh-navy);
+  --secondary: var(--jh-navy-raised);
+  --secondary-foreground: var(--jh-ivory);
+  --muted: var(--jh-navy-raised);
+  --muted-foreground: rgba(245, 240, 230, 0.62);
+  --accent: var(--jh-gold-mid);
+  --accent-foreground: var(--jh-navy);
+  --destructive: #a8443c;
+  --border: rgba(232, 208, 144, 0.16);
+  --input: rgba(232, 208, 144, 0.22);
+  --ring: var(--jh-gold);
+  --chart-1: var(--jh-gold);
+  --chart-2: var(--jh-gold-mid);
+  --chart-3: var(--jh-ivory);
+  --chart-4: #6c7f9e;
+  --chart-5: var(--jh-navy-raised);
+  --sidebar: var(--jh-black);
+  --sidebar-foreground: var(--jh-ivory);
+  --sidebar-primary: var(--jh-gold);
+  --sidebar-primary-foreground: var(--jh-black);
+  --sidebar-accent: #1c1a17;
+  --sidebar-accent-foreground: var(--jh-ivory);
+  --sidebar-border: rgba(232, 208, 144, 0.14);
+  --sidebar-ring: var(--jh-gold);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+
+/*
+ * Ficha de orden imprimible/exportable a PDF (OrderSummaryDocument): se
+ * imprime con el mismo fondo negro y acentos dorados de la marca en vez de
+ * la hoja blanca por defecto — por eso se fuerza print-color-adjust para
+ * que Chrome no descarte los fondos/colores al exportar. El shell del CMS
+ * (sidebar, header, formularios operativos) se oculta vía `print:hidden` en
+ * los propios componentes.
+ */
+@media print {
+  @page {
+    size: letter portrait;
+    margin: 0.5in;
+  }
+
+  * {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  /*
+   * El fondo navy es del resumen de orden, no de toda impresión: la orden de
+   * trabajo se imprime en papel claro a propósito (es tinta que paga el taller
+   * y un documento que tiene que sobrevivir a una fotocopia). Se ancla al
+   * documento que sí lo quiere en vez de aplicarlo a `body` en general.
+   */
+  body:has(.order-summary-sheet) {
+    background: #0D1F3C;
+  }
+
+  /* Orden de trabajo: papel claro, una prenda por bloque sin cortar. */
+  .workshop-garment {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Resumen de orden: hoja carta con totales anclados al pie */
+  .order-summary-sheet {
+    display: flex;
+    flex-direction: column;
+    min-height: 10in;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .order-summary-body {
+    flex: 1 1 auto;
+  }
+
+  .order-summary-footer {
+    flex-shrink: 0;
+    margin-top: auto;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .order-summary-item {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
+/* ══════════════════════════════════════════════════════════════════════════
+ * Movimiento
+ *
+ * Tesis: la línea. El CTA de marca ya lo declara — "es una línea, no una
+ * flecha: se extiende en lugar de apuntar". La estructura del sitio son
+ * filetes de 1px en oro. Así que el movimiento de John Henry es el de la tiza
+ * sobre la tela y la costura que corre: líneas que se trazan, telas que se
+ * destapan, texto que se asienta. Nada que rebote, nada que salte.
+ *
+ * Reglas de la casa:
+ *  · Sin librería de animación. CSS puro.
+ *  · El contenido es visible por defecto. Nada acá lo esconde a la espera de
+ *    JS o de un scroll: si el navegador no soporta el timeline, la página se
+ *    ve completa y quieta, que es un final perfectamente digno.
+ *  · Cada efecto vive dentro de prefers-reduced-motion: no-preference.
+ * ══════════════════════════════════════════════════════════════════════════ */
+
+@theme inline {
+  /* Desaceleración confiada. Nunca bounce: la marca no es juguetona. */
+  --ease-jh: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes jh-settle {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+@keyframes jh-draw {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+/* La tela que se destapa: se abre desde abajo, no se desvanece. */
+@keyframes jh-unveil {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+}
+
+@keyframes jh-scrim-recede {
+  from {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* ── Momento de autoría: la llegada al hero ───────────────────────────
+   * Corre una sola vez, al cargar. La imagen suelta su escala, y encima el
+   * imagotipo, el titular, la bajada y el CTA se asientan en cascada — como
+   * una prenda que termina de caer sobre el cuerpo. Total ~1.1s.            */
+  .jh-arrive > * {
+    animation: jh-settle 700ms var(--ease-jh) backwards;
+  }
+  .jh-arrive > *:nth-child(1) { animation-delay: 120ms; }
+  .jh-arrive > *:nth-child(2) { animation-delay: 260ms; }
+  .jh-arrive > *:nth-child(3) { animation-delay: 380ms; }
+  .jh-arrive > *:nth-child(4) { animation-delay: 500ms; }
+  .jh-arrive > *:nth-child(5) { animation-delay: 620ms; }
+
+  .jh-hero-image {
+    animation: jh-scrim-recede 1400ms var(--ease-jh) backwards;
+  }
+
+  /* ── Soporte: al entrar en viewport ───────────────────────────────────
+   * Scroll-driven nativo. Sin IntersectionObserver, sin estado en JS, y sin
+   * el riesgo clásico de dejar contenido en opacity:0 si algo falla: donde
+   * no hay view() el @supports no aplica y todo queda visible y quieto.     */
+  @supports (animation-timeline: view()) {
+    /* Los rangos van anclados a la ENTRADA, no a `cover`.
+     *
+     * Con `cover N%` el progreso se mide sobre el recorrido completo del
+     * elemento por la pantalla, así que una foto alta seguía recortada un buen
+     * rato después de estar visible — un bloque en blanco que se lee como
+     * imagen rota, no como intención. Atado a `entry`, cada pieza termina de
+     * revelarse justo cuando termina de entrar. */
+    .jh-settle {
+      animation: jh-settle 1ms linear both;
+      animation-timeline: view();
+      animation-range: entry 20% entry 90%;
+    }
+
+    .jh-unveil {
+      animation: jh-unveil 1ms linear both;
+      animation-timeline: view();
+      animation-range: entry 10% entry 80%;
+    }
+
+    /* El filete que se traza, de izquierda a derecha, como la tiza. */
+    .jh-seam {
+      animation: jh-draw 1ms linear both;
+      animation-timeline: view();
+      animation-range: entry 25% entry 95%;
+      transform-origin: left center;
+    }
+
+    /* Cascada para listas que llegan como lista. Tope: 4 — más allá, la
+       espera se siente latencia y no ritmo. */
+    .jh-stagger > *:nth-child(1) { animation-delay: 0ms; }
+    .jh-stagger > *:nth-child(2) { animation-delay: 60ms; }
+    .jh-stagger > *:nth-child(3) { animation-delay: 120ms; }
+    .jh-stagger > *:nth-child(n + 4) { animation-delay: 180ms; }
+  }
+}

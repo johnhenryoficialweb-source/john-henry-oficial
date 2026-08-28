@@ -1,0 +1,3 @@
+
+# Description:
+This image features a sophisticated branding design for "John Henry Sastrería," established in 2004. Presented are three distinct elements on a sleek black background, each labeled accordingly. On the left is the "Isotipo," showcasing an elegant, intertwined "JH" in a refined golden hue. The central section highlights the "Logotipo," displaying the full name "John Henry" with "Sastrería · Est. 2004" beneath, all in a classic font that exudes luxury. On the right is the "Imagotipo," combining both the isotype and logotype, unifying the brand's identity. The overall aesthetic communicates prestige and timeless style.

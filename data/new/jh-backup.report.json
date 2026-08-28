@@ -1,0 +1,99 @@
+{
+  "clients_rows": 617,
+  "clients_parsed": 617,
+  "clients_without_phone": 21,
+  "phone_collisions": [
+    {
+      "legacy_id": "77",
+      "full_name": "Guillermo Chavarro",
+      "phone": "3134247185-77"
+    },
+    {
+      "legacy_id": "102",
+      "full_name": "Juan Vargas",
+      "phone": "5619755013-102"
+    },
+    {
+      "legacy_id": "127",
+      "full_name": "Janson Pier",
+      "phone": "50766736070-127"
+    },
+    {
+      "legacy_id": "228",
+      "full_name": "JUAN CARLOS ALVARO DELGADO PAPA",
+      "phone": "50762002668-228"
+    },
+    {
+      "legacy_id": "309",
+      "full_name": "Arun Tolani",
+      "phone": "50766126127-309"
+    },
+    {
+      "legacy_id": "348",
+      "full_name": "Juan Pablo Triana Giraldo",
+      "phone": "0573204609520-348"
+    },
+    {
+      "legacy_id": "459",
+      "full_name": "EMMANUEL ZULUAGA",
+      "phone": "0-459"
+    },
+    {
+      "legacy_id": "460",
+      "full_name": "JOHAN CARTAGENA",
+      "phone": "0-460"
+    },
+    {
+      "legacy_id": "461",
+      "full_name": "MOISES CATAÑO",
+      "phone": "0-461"
+    },
+    {
+      "legacy_id": "522",
+      "full_name": "Ernesto calvo",
+      "phone": "50766736878-522"
+    },
+    {
+      "legacy_id": "560",
+      "full_name": "Juan Causadias",
+      "phone": "64146134-560"
+    },
+    {
+      "legacy_id": "593",
+      "full_name": "Daniel Ernest Motta",
+      "phone": "2151912-593"
+    }
+  ],
+  "location_inferred": 83,
+  "by_location": {
+    "CO": {
+      "clients": 185,
+      "orders": 227
+    },
+    "PA": {
+      "clients": 432,
+      "orders": 843
+    }
+  },
+  "measurements_rows": 1433,
+  "measurements_by_garment": {
+    "saco": 471,
+    "pantalon": 428,
+    "camisa": 491,
+    "chaleco": 43
+  },
+  "discarded_measurements": 16,
+  "normalized_measurements": 185,
+  "normalized_by_rule": {
+    "saco_Espalda → back_width": 180,
+    "pant_entrepierna → inseam": 5
+  },
+  "orders_rows": 1070,
+  "orders_parsed": 1070,
+  "orders_orphan": 0,
+  "orders_without_items": [
+    "2",
+    "3"
+  ],
+  "order_items_rows": 1639
+}

@@ -1,0 +1,62 @@
+{
+  "clients_input_rows": 614,
+  "clients_parsed": 612,
+  "clients_merged": 2,
+  "clients_without_orders": 242,
+  "orders_parsed": 1000,
+  "orders_orphan": 0,
+  "synthetic_phones": [
+    {
+      "client_key": "roderik motta papa",
+      "full_name": "Roderik Motta Papa",
+      "phone": "IMPORT-29"
+    },
+    {
+      "client_key": "hugo moran rodriguez",
+      "full_name": "Hugo Moran Rodríguez",
+      "phone": "IMPORT-79"
+    },
+    {
+      "client_key": "guillermo vargas",
+      "full_name": "Guillermo Vargas",
+      "phone": "IMPORT-519"
+    },
+    {
+      "client_key": "alejandro chavarro ricaurte",
+      "full_name": "Alejandro Chavarro Ricaurte",
+      "phone": "IMPORT-543"
+    }
+  ],
+  "merged_names": [
+    {
+      "client_key": "karlos bustamante",
+      "full_name": "KARLOS BUSTAMANTE",
+      "merged_rows": [
+        445
+      ]
+    },
+    {
+      "client_key": "julian fernandez",
+      "full_name": "Julian Fernandez",
+      "merged_rows": [
+        33
+      ]
+    }
+  ],
+  "by_location": {
+    "CO": {
+      "clients": 280,
+      "orders": 258
+    },
+    "PA": {
+      "clients": 332,
+      "orders": 742
+    }
+  },
+  "garment_type_counts": {
+    "pantalon": 378,
+    "saco": 422,
+    "camisa": 693,
+    "otro": 35
+  }
+}

@@ -1,0 +1,17 @@
+legacy_client_id,full_name,garment_type,legacy_column,field,value,reason
+1,Bastian Camilo Matheus Lemus,saco,saco_Torax,chest,10,fuera del rango plausible 60–180 cm
+3,Jorge Armando Linares,camisa,cami_Pecho,chest,24,fuera del rango plausible 60–185 cm
+21,Sergio Augusto Ramirez Mantilla,camisa,cami_Pecho,chest,32,fuera del rango plausible 60–185 cm
+28,Sigifredo Alvarez Millan,camisa,cami_Pecho,chest,34,fuera del rango plausible 60–185 cm
+87,Robinson Molina,saco,saco_Hombro,shoulder_seam,35,fuera del rango plausible 8–25 cm
+323,Charles Larrachondo,saco,saco_Cintura,waist,10,fuera del rango plausible 55–180 cm
+339,Jean Morales Garcia,camisa,cami_Manga,sleeve_length,23,fuera del rango plausible 40–85 cm
+375,JUAN MANUEL BARLETTA,camisa,cami_Pecho,chest,34,fuera del rango plausible 60–185 cm
+381,ELIASID ELISEA TORRES CHAPARRO,camisa,cami_Manga,sleeve_length,23,fuera del rango plausible 40–85 cm
+399,JAIME QUIROGA,saco,saco_Hombro,shoulder_seam,42,fuera del rango plausible 8–25 cm
+399,JAIME QUIROGA,saco,saco_hah,shoulder_width,14,fuera del rango plausible 30–60 cm
+418,LUIS FELIPE OCHOA,saco,saco_Hombro,shoulder_seam,45,fuera del rango plausible 8–25 cm
+441,Hans Taft,pantalon,pant_cintura,waist,38,fuera del rango plausible 40–150 cm
+490,Jordan Prieto,camisa,cami_Base,hem_circ,28,fuera del rango plausible 60–180 cm
+525,Jean Laguna,camisa,cami_puno,cuff,65,fuera del rango plausible 12–40 cm
+542,Hugo Moran Rodríguez,saco,saco_Hombro,shoulder_seam,115,fuera del rango plausible 8–25 cm
