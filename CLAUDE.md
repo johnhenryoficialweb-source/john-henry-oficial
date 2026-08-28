@@ -1,229 +1,46 @@
-# SYSTEM UX RULES — ESTÁNDAR UNIVERSAL DE EXPERIENCIA DE USUARIO
+# John Henry Oficial — guía para agentes
 
-## Naturaleza de estas reglas
+## 1. Flujo de trabajo obligatorio (GitHub + Pime Git + Vercel)
 
-Estas reglas forman parte de la arquitectura del producto y deberán aplicarse a
-todas las pantallas, módulos, formularios, dashboards, asistentes, flujos y
-futuras funcionalidades.
+Todo el código y la documentación del proyecto viven en GitHub. Los despliegues de **producción** son automáticos cuando se hace push a `main`; no hay deploy manual con la CLI de Vercel.
 
-**No son recomendaciones. Son reglas obligatorias.**
+| Concepto | Valor |
+|----------|--------|
+| Repositorio (web) | https://github.com/johnhenryoficialweb-source/john-henry-oficial |
+| Remote Git | `git@github.com-johnhenryoficialweb:johnhenryoficialweb-source/john-henry-oficial.git` |
+| Perfil Pime Git | `johnhenryoficialweb` |
+| Producción Vercel | https://john-henry-oficial.vercel.app |
+| Dominio | https://www.johnhenryoficial.com |
 
-Antes de considerar terminada una funcionalidad, el sistema deberá validar su
-cumplimiento.
+El proyecto de Vercel está conectado al repositorio de GitHub: cada push a `main` dispara un build y deploy en producción.
 
-## Objetivo General
+### Comandos permitidos para Git
 
-La interfaz debe reducir el esfuerzo mental del usuario, minimizar errores y
-acelerar la ejecución de tareas.
+Usar **solo** Pime Git (nunca `git commit`, `git push` ni `git pull` directos):
 
-El usuario nunca debería preguntarse: "¿Qué debo hacer ahora?"
-
-La interfaz debe guiar naturalmente cada flujo y hacer evidente la siguiente
-acción.
-
-## 1. Smart Defaults
-
-**Objetivo:** Reducir la fatiga de decisión.
-
-Nunca presentar formularios completamente vacíos cuando el sistema pueda
-inferir información.
-
-**Regla obligatoria**
-- Preseleccionar opciones comunes.
-- Usar fechas actuales cuando corresponda.
-- Recordar preferencias previas.
-- Sugerir configuraciones recomendadas.
-- Aplicar filtros inteligentes por contexto.
-- Autocompletar información ya conocida.
-
-El usuario debe revisar y ajustar, no construir todo desde cero.
-
-## 2. Reducir decisiones innecesarias
-
-**Objetivo:** Minimizar la carga cognitiva.
-
-Antes de agregar cualquier elemento preguntar: ¿Puede inferirse
-automáticamente? Si la respuesta es sí, automatizarlo.
-
-## 3. Goal Gradient Effect
-
-**Objetivo:** Generar sensación de avance.
-
-Los procesos largos nunca deben sentirse largos.
-
-**Reglas**
-- Mostrar progreso visible.
-- Nunca iniciar en 0% si ya existe información conocida.
-- Dividir tareas complejas en pasos claros.
-- Mostrar lo ya completado automáticamente.
-
-**Ejemplo**
-```
-Paso 1 de 4
-Información básica completada
-20% completado
+```bash
+pime-git verify
+pime-git commit --m "mensaje descriptivo"
+pime-git push
+pime-git pull
 ```
 
-## 4. Mostrar valor inmediatamente
+Antes de commitear, ejecutar `pime-git verify` y corregir lo que falle.
 
-**Objetivo:** Evitar pantallas vacías y fricción inicial.
+### Prohibido
 
-Antes de pedir acciones, mostrar información útil.
+- **No** usar `git commit`, `git push` o `git pull` sin el wrapper Pime Git.
+- **No** usar `npx vercel deploy` (ni `--prod`) para producción: el deploy es vía integración GitHub → Vercel.
+- **No** subir datos sensibles ni archivos de importación en `data/` (ver `data/README.md`).
 
-**Ejemplos**
-- Resúmenes antes de reportes.
-- Métricas rápidas en dashboards.
-- Actividad reciente.
-- Indicadores clave.
-- Vista previa de resultados.
+Variables de entorno: la plantilla versionada es `.env.example`; los secretos van en `.env.local` (ignorado).
 
-## 5. Progressive Disclosure
+---
 
-**Objetivo:** Mostrar solo lo necesario.
+## 2. Reglas UX del producto
 
-La complejidad debe revelarse gradualmente.
+Las reglas obligatorias de experiencia de usuario (smart defaults, progressive disclosure, una acción principal por pantalla, etc.) están definidas en:
 
-**Primero**
-- Campos esenciales.
-- Acción principal.
+**`.cursor/rules/ux-system-rules.mdc`**
 
-**Después (si es necesario)**
-- Opciones avanzadas.
-- Configuraciones.
-- Automatizaciones.
-- Etiquetas.
-- Archivos.
-- Integraciones.
-
-## 6. IKEA Effect
-
-**Objetivo:** Generar sensación de construcción y pertenencia.
-
-Mientras el usuario crea algo importante, mostrar resultados parciales en
-tiempo real.
-
-**Ejemplos**
-- Vista previa de formularios.
-- Actualización inmediata de calendarios.
-- Dashboards que reaccionan al instante.
-- Previsualización de documentos.
-
-## 7. Contexto Permanente
-
-**Objetivo:** Nunca desorientar al usuario.
-
-**Siempre mostrar**
-- Dónde está.
-- Qué está viendo.
-- Qué está editando.
-- Qué entidad o proyecto está activo.
-
-**Usar**
-- Breadcrumbs.
-- Títulos claros.
-- Jerarquía visible.
-- Contexto persistente.
-
-## 8. Evitar Estados Vacíos
-
-**Objetivo:** El sistema nunca debe parecer roto.
-
-Nunca mostrar solo "No hay datos."
-
-**Siempre acompañar con**
-- Crear nuevo elemento.
-- Importar datos.
-- Ver ejemplos.
-- Explorar plantillas.
-- Aprender cómo empezar.
-
-## 9. Loss Aversion
-
-**Objetivo:** Comunicar claramente el impacto de acciones destructivas.
-
-**No decir:** "¿Desea eliminar?"
-
-**Decir:**
-- "Esta acción eliminará el elemento y ocultará su historial asociado."
-- "Podrá recuperarse desde la papelera durante los próximos 30 días."
-
-## 10. Contrast Effect
-
-**Objetivo:** Dar contexto antes de decisiones importantes.
-
-**Antes de exportar, eliminar o finalizar, mostrar:**
-- Total de registros afectados.
-- Periodo.
-- Cobertura.
-- Resumen.
-- Consecuencias.
-
-## 11. Una Acción Principal por Pantalla
-
-**Objetivo:** Claridad visual.
-
-**Reglas**
-- Una acción primaria claramente destacada.
-- Acciones secundarias con menor jerarquía.
-- Evitar múltiples botones compitiendo por atención.
-
-## 12. Retroalimentación Inmediata
-
-**Objetivo:** El usuario siempre debe saber qué ocurrió.
-
-**Mostrar**
-- Indicadores de carga.
-- Mensajes de éxito.
-- Errores claros.
-- Confirmaciones.
-- Animaciones sutiles.
-
-Nunca dejar al usuario preguntándose si el sistema respondió.
-
-## 13. Velocidad para Usuarios Frecuentes
-
-**Objetivo:** Cada uso repetido debe ser más rápido.
-
-**Incorporar**
-- Atajos de teclado.
-- Búsqueda global.
-- Acciones rápidas.
-- Favoritos.
-- Recientes.
-- Filtros persistentes.
-- Preferencias recordadas.
-
-## 14. Consistencia Absoluta
-
-**Objetivo:** El usuario nunca debe reaprender el sistema.
-
-**Todos los módulos deben compartir**
-- Mismos patrones de navegación.
-- Mismos atajos.
-- Mismos estados visuales.
-- Misma iconografía.
-- Misma terminología.
-- Mismos comportamientos.
-
-## 15. La Interfaz Nunca Debe Ser un Obstáculo
-
-**Objetivo final.**
-
-La interfaz existe para ayudar al usuario a completar tareas más rápido, con
-menos errores y con menos esfuerzo mental.
-
-## Criterio de aceptación obligatorio
-
-Antes de dar por terminada una funcionalidad, validar que:
-- Reduce la carga cognitiva.
-- Minimiza clics y decisiones.
-- Aprovecha contexto y datos conocidos.
-- Mantiene consistencia.
-- Proporciona retroalimentación clara.
-- Es accesible y usable.
-- Está alineada con principios de UX y psicología cognitiva.
-
-## Regla maestra
-
-> "Si una interfaz obliga al usuario a pensar demasiado para completar una
-> tarea frecuente, la interfaz aún no está terminada."
+Consulta ese archivo antes de dar por terminada cualquier pantalla, formulario o flujo del CMS o del sitio público. No dupliques aquí el texto completo: es la fuente de verdad para UX.

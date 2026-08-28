@@ -1,3 +1,0 @@
-
-# Description:
-The image showcases three different visual elements for "John Henry Sastrería," a tailoring brand established in 2004. On the left is the "Isotipo," featuring a stylized monogram of the letters "JH" in an elegant serif font, symbolizing sophistication and professionalism. In the center, the "Logotipo" presents the full name "John Henry" with the subtitle "Sastrería · Est. 2004," emphasizing the brand's heritage and expertise. On the right, the "Imagotipo" combines both the monogram and full brand name, creating a complete visual identity that projects tradition and quality. The use of a deep navy blue on a cream background enhances the classic and refined aesthetic.

@@ -1,37 +1,36 @@
 ---
-description: Deploy John Henry Oficial solo a prj_IFp21rJxIMfODIMqnBxmgP6EO7ZT
+description: Deploy John Henry Oficial — solo vía GitHub (integración Vercel)
 alwaysApply: true
 ---
 
-# Vercel: John Henry Oficial (producción fija)
+# Vercel: John Henry Oficial (producción vía GitHub)
 
 **projectId:** `prj_IFp21rJxIMfODIMqnBxmgP6EO7ZT`  
 **projectName:** `john-henry-oficial`  
 **orgId:** `team_ynCZ0ZoRGYzwY9nQlqA6e6rN`  
-**URL producción:** https://john-henry-oficial.vercel.app
+**URL producción:** https://john-henry-oficial.vercel.app  
+**Dominio:** https://www.johnhenryoficial.com  
+**Repo:** https://github.com/johnhenryoficialweb-source/john-henry-oficial
 
-## Validación obligatoria antes de cualquier deploy
+## Cómo se despliega producción
 
-1. Leer `.vercel/project.json`.
-2. Confirmar que `projectId` es exactamente `prj_IFp21rJxIMfODIMqnBxmgP6EO7ZT`.
-3. Si falta `.vercel/project.json`, el `projectId` no coincide, o el inspect del proyecto falla → **cancelar** el deploy. No crear otro proyecto ni enlazar otro.
+1. Los cambios se suben a `main` con **Pime Git** (`pime-git push`), nunca con `git push` directo (ver `CLAUDE.md`).
+2. Vercel construye y despliega automáticamente al detectar el push en GitHub.
+3. **No** ejecutar `npx vercel deploy` ni `npx vercel deploy --prod` para publicar en producción.
+
+## Validación local del enlace Vercel (opcional)
+
+Si necesitas comprobar que el directorio local apunta al proyecto correcto (p. ej. para previews o logs):
 
 ```bash
-# Comprobar enlace local
 cat .vercel/project.json
 # Debe contener: "projectId": "prj_IFp21rJxIMfODIMqnBxmgP6EO7ZT"
 ```
 
-## Deploy
+Si falta `.vercel/project.json` o el `projectId` no coincide, no enlaces otro proyecto ni crees uno nuevo sin confirmación explícita.
 
-Usar siempre `npx vercel` (nunca el binario global):
+## Después de un deploy
 
-```bash
-npx vercel deploy --prod --yes
-```
-
-## Post-deploy
-
-- Verificar en la salida: `Build Completed` y/o `readyState: READY` / `status: ok`.
-- Reportar URL de producción (`https://john-henry-oficial.vercel.app`), resultado del build y warnings relevantes.
-- Tras cambiar env vars en Vercel, redesplegar con `--force` si hace falta que el build las tome.
+- Revisar en Vercel que el deployment asociado al commit en `main` termine en `READY`.
+- Reportar la URL de producción y warnings relevantes del build si el usuario lo pide.
+- Tras cambiar env vars en Vercel, un nuevo push a `main` (o redeploy desde el dashboard) hace que el build las tome; no asumir que un deploy CLI local actualiza producción.

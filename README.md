@@ -81,11 +81,13 @@ npm run lint     # ESLint
 - `src/lib/email` — catálogo de correos del sistema (`registry.ts`), plantillas de marca y el único punto de envío (`send.ts`). El módulo `/correos` del CMS se dibuja entero desde el catálogo: agregar una plantilla ahí la hace aparecer sola, con vista previa y envío de prueba.
 - `supabase/migrations` — esquema SQL completo con RLS por sede/rol.
 
-## Deploy en Vercel
+## Deploy (GitHub → Vercel)
 
-1. Importa el repositorio en Vercel.
-2. Configura las mismas variables de entorno de `.env.local` en el proyecto de Vercel (Settings → Environment Variables).
-3. Despliega. El build de Next.js corre el type-check automáticamente.
+Producción se actualiza **automáticamente** al hacer push a `main` en [john-henry-oficial](https://github.com/johnhenryoficialweb-source/john-henry-oficial). El proyecto de Vercel está enlazado a ese repositorio; no uses `npx vercel deploy` para producción.
+
+1. Configura en Vercel (Settings → Environment Variables) las mismas variables que en `.env.local` (usa `.env.example` como referencia).
+2. Flujo de cambios: `pime-git verify` → `pime-git commit --m "..."` → `pime-git push` (ver `CLAUDE.md`).
+3. Revisa el deployment en el dashboard de Vercel o en https://john-henry-oficial.vercel.app. El build de Next.js incluye type-check.
 
 ## Pendiente
 
