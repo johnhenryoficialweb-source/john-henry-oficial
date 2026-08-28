@@ -1,5 +1,7 @@
 # John Henry Oficial
 
+Repositorio: [github.com/johnhenryoficialweb-source/john-henry-oficial](https://github.com/johnhenryoficialweb-source/john-henry-oficial)
+
 Sistema completo (sitio público + CMS/CRM interno) para una sastrería de alta costura con sedes en Colombia y Panamá. Next.js 16 (App Router) + TypeScript + Tailwind v4 + Supabase.
 
 Ver `PLAN.md` para el estado detallado de cada módulo frente al plan original.
